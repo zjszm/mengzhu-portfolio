@@ -1,0 +1,55 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { projects } from '../../data/projects.js';
+export function getStaticPaths() { return projects.map((project) => ({ params: { slug: project.slug }, props: { project } })); }
+const { project } = Astro.props;
+const studentProjectSlugs = ['environmental-regulation', 'alphabet-valuation', 'green-nudge', 'algorithmic-pricing', 'crypto-behavior'];
+const backHref = studentProjectSlugs.includes(project.slug) ? '/student-z' : '/work-z';
+const isWorkCase = Boolean(project.cases);
+const isWorkDetail = isWorkCase || project.slug === 'dairy-supply-chain';
+---
+<Layout title={`${project.title} — 朱萌`} description={project.description}>
+  <header class="site-header detail-header"><a class="wordmark" href="/">朱萌<span> / </span>JUDY ZHU</a><a class="back-link" href={backHref}>← 返回{isWorkDetail ? '践行' : '求知'}</a><span class="header-index">{project.number} / 04</span></header>
+  <main class={`project-detail detail-${project.color} ${isWorkDetail ? 'detail-work-detail' : ''}`}>
+    <section class="detail-hero"><p class="eyebrow">{project.category} · {project.year}</p><h1>{project.title}</h1><p class="detail-lead">{project.short}</p><div class="detail-meta"><span>{project.role}</span><span>{project.tags.join(' · ')}</span></div></section>
+    <section class={`detail-body ${isWorkDetail ? 'detail-case-body' : ''}`}>{!isWorkDetail && <div class="detail-marker">PROJECT<br />{project.number}</div>}{isWorkCase ? <div class="detail-cases">{project.cases.map((workCase, index) => <section class="detail-case"><p class="case-index">CASE / 0{index + 1}</p><h2>{workCase.title}</h2><div class="detail-sections">{workCase.sections.map(([heading, text]) => <article><p class="section-label">/ {heading}</p><p>{text}</p></article>)}</div></section>)}</div> : <div class="detail-sections">{project.sections.map(([heading, text]) => <article><p class="section-label">/ {heading}</p><p>{text}</p></article>)}</div>}</section>
+    <a class="next-project" href={backHref}>← {isWorkDetail ? '返回践行' : '查看全部项目'}</a>
+  </main>
+  <footer class="site-footer"><span>© 2026 MENG ZHU</span><span>CASE STUDY / {project.number}</span><a href="#top">回到顶部 ↑</a></footer>
+
+  <style>
+    .project-detail .detail-hero h1 {
+      font-size: 34px;
+      line-height: 1.25;
+      margin: 20px 0 7px;
+      max-width: none;
+      white-space: nowrap;
+    }
+
+    .project-detail .detail-lead {
+      font-size: 29px;
+      line-height: 1.5;
+      max-width: 1000px;
+    }
+
+    .detail-cases { display: grid; gap: 90px; }
+    .detail-case-body { grid-template-columns: 1fr; max-width: 1000px; }
+    .detail-case { border-top: 1px solid var(--line); padding-top: 18px; }
+    .detail-case .case-index { color: var(--muted); font-size: 11px; letter-spacing: .1em; margin: 0 0 20px; }
+    .detail-case h2 { font-family: var(--serif); font-size: 28px; font-weight: 400; line-height: 1.2; margin: 0 0 42px; max-width: none; white-space: nowrap; }
+    .detail-case .detail-sections { gap: 40px; }
+    .detail-work-detail .detail-lead { color: var(--muted); font-size: 24px; }
+
+    @media (max-width: 800px) {
+      .project-detail .detail-hero h1 {
+        font-size: 28px;
+        white-space: normal;
+      }
+
+      .project-detail .detail-lead { font-size: 23px; }
+      .detail-cases { gap: 58px; }
+      .detail-case h2 { font-size: 28px; white-space: normal; }
+      .detail-work-detail .detail-lead { font-size: 24px; }
+    }
+  </style>
+</Layout>
