@@ -1,0 +1,21 @@
+---
+import '../styles/global.css';
+const { title = '朱萌 / Meng Zhu', description = '在数据、商业、内容与人的感受之间穿针引线。' } = Astro.props;
+---
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <link rel="icon" href="data:," />
+    <title>{title}</title>
+  </head>
+  <body>
+    <slot />
+    <script>
+      import { initSite } from '../scripts/site.js';
+      initSite();
+    </script>
+  </body>
+</html>
