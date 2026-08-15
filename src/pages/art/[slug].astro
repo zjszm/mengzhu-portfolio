@@ -1,0 +1,102 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { artSeries } from '../../data/artSeries.js';
+
+export function getStaticPaths() {
+  return artSeries.map((series) => ({ params: { slug: series.slug }, props: { series } }));
+}
+
+const { series } = Astro.props;
+---
+<Layout title={`${series.title} — 创造`}>
+  <header class="sub-header site-header"><a class="wordmark" href="/">朱萌<span> / </span>JUDY ZHU</a><nav><a href="/student-z">求知</a><a href="/work-z">践行</a><a class="active" href="/artist-z">创造</a><a href="/explorer-z">探索</a><a href="/contact">联系</a></nav><span class="header-index">Z / 03</span></header>
+
+  <main class="art-detail-page">
+    <a class="detail-back" href="/artist-z">← 返回作品系列</a>
+    <header class="detail-intro">
+      <p class="eyebrow">SERIES / {series.index}</p>
+      <h1>{series.title}</h1>
+      <p>{series.description}</p>
+    </header>
+
+    {series.images && series.slug !== 'motion' && (
+      <section class:list={['detail-gallery', { 'detail-gallery-three': series.slug === 'moments' }]} aria-label={`${series.title}作品`}>
+        {series.images.map((image) => <figure><img src={image.src} alt={image.alt} loading="lazy" /></figure>)}
+      </section>
+    )}
+
+    {series.slug === 'motion' && (
+      <section class="detail-motion">
+        {series.images.map((image) => <article><img src={image.src} alt={image.alt} loading="lazy" /><div><h2>{image.title}</h2><p>{image.description}</p></div></article>)}
+      </section>
+    )}
+
+    {series.slug === 'society' && (
+      <section class="detail-society">
+        {series.groups.map((group) => <article class="detail-society-group"><div class="detail-group-top"><span>{group.kicker}</span><b>{group.index}</b></div><h2>{group.title}</h2><p>{group.description}</p><div class="detail-links">{group.links.map(([label, title, href]) => <a href={href} target="_blank" rel="noopener"><b>{label}</b>{title}<span>↗</span></a>)}</div></article>)}
+        <article class="detail-visual-group"><div class="detail-group-top"><span>视觉物料</span><b>04</b></div><h2>活动物料设计</h2><div class="detail-visuals">{series.visuals.map((visual) => <figure><img src={visual.src} alt={visual.alt} loading="lazy" /></figure>)}</div></article>
+      </section>
+    )}
+  </main>
+
+  <footer class="site-footer"><span>© 2026 MENG ZHU</span><a href="/artist-z">回到创造 ↑</a></footer>
+
+  <style>
+    .art-detail-page {
+      --detail-paper: #eee9df;
+      --detail-ink: #24211d;
+      background: var(--detail-paper);
+      color: var(--detail-ink);
+      min-height: calc(100vh - 77px);
+      padding: 32px max(6vw, 26px) 12vh;
+    }
+    .detail-back { display: inline-block; font-size: 12px; margin-bottom: 11vh; }
+    .detail-back:hover { text-decoration: underline; }
+    .detail-intro { border-top: 1px solid rgba(36, 33, 29, .35); padding-top: 20px; }
+    .detail-intro .eyebrow { color: #456cff; }
+    .detail-intro h1 { font-family: var(--serif); font-size: clamp(22px, 2vw, 28px); font-weight: 400; letter-spacing: -.025em; line-height: 1.35; margin: 20px 0 6px; }
+    .detail-intro > p:last-child { font-size: clamp(18px, 1.65vw, 24px); line-height: 1.55; margin: 0; max-width: none; }
+    .detail-gallery { align-items: start; display: grid; gap: 12px; grid-template-columns: repeat(2, minmax(0, 1fr)); margin: 12vh auto 0; max-width: 1040px; }
+    .detail-gallery figure { background: #f8f4eb; margin: 0; }
+    .detail-gallery img { display: block; height: auto; max-height: 680px; object-fit: contain; width: 100%; }
+    .detail-gallery figure:nth-child(3):last-child { grid-column: 1 / -1; justify-self: center; max-width: 66%; }
+    .detail-gallery-three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .detail-gallery-three figure { align-items: center; aspect-ratio: 1 / 1; display: flex; justify-content: center; }
+    .detail-gallery-three figure:nth-child(3):last-child { grid-column: auto; justify-self: stretch; max-width: none; }
+    .detail-gallery-three img { height: 100%; object-fit: contain; }
+    .detail-motion { display: grid; gap: 10vw; grid-template-columns: repeat(2, minmax(0, 1fr)); margin: 12vh auto 0; max-width: 1040px; }
+    .detail-motion article { margin: 0; }
+    .detail-motion article:nth-child(2) { margin-top: 9vw; }
+    .detail-motion img { aspect-ratio: 1 / 1; background: #f8f4eb; display: block; object-fit: contain; width: 100%; }
+    .detail-society h2, .detail-visual-group h2 { font-family: var(--serif); font-size: clamp(30px, 4vw, 58px); font-weight: 400; letter-spacing: -.035em; line-height: 1; margin: 22px 0 15px; }
+    .detail-motion h2 { font-family: var(--serif); font-size: 16px; font-weight: 400; letter-spacing: 0; line-height: 1.4; margin: 18px 0 8px; white-space: nowrap; }
+    .detail-motion p, .detail-society-group > p { color: var(--muted); font-size: 14px; line-height: 1.85; margin: 0; max-width: 520px; }
+    .detail-society { display: grid; gap: 14px; grid-template-columns: repeat(2, minmax(0, 1fr)); margin: 12vh auto 0; max-width: 1040px; }
+    .detail-society-group, .detail-visual-group { border-top: 1px solid rgba(36, 33, 29, .45); padding: 18px 0 32px; }
+    .detail-group-top { align-items: center; color: var(--muted); display: flex; font-size: 11px; justify-content: space-between; letter-spacing: .08em; text-transform: uppercase; }
+    .detail-group-top b { color: var(--detail-ink); font-family: var(--serif); font-size: 22px; font-weight: 400; }
+    .detail-society-group:nth-child(2) { margin-top: 0; }
+    .detail-society-group:nth-child(3) { background: rgba(255, 118, 94, .15); padding: 18px 22px 32px; }
+    .detail-links { border-top: 1px solid rgba(36, 33, 29, .3); margin-top: 22px; }
+    .detail-links a { align-items: baseline; border-bottom: 1px solid rgba(36, 33, 29, .2); display: flex; font-family: var(--serif); font-size: 17px; gap: 12px; justify-content: space-between; line-height: 1.4; padding: 13px 0; }
+    .detail-links a b { font-family: var(--sans); font-size: 10px; font-weight: 400; letter-spacing: .08em; margin-right: auto; }
+    .detail-links a span { font-family: var(--sans); }
+    .detail-visual-group { grid-column: 1 / -1; }
+    .detail-visuals { display: grid; gap: 12px; grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: 18px; }
+    .detail-visuals figure { background: #f8f4eb; margin: 0; padding: 8px; }
+    .detail-visuals img { display: block; height: 300px; object-fit: contain; width: 100%; }
+    @media (max-width: 800px) {
+      .art-detail-page { padding-top: 24px; }
+      .detail-back { margin-bottom: 7vh; }
+      .detail-intro h1 { font-size: 22px; margin: 18px 0 6px; }
+      .detail-intro > p:last-child { font-size: 17px; }
+      .detail-gallery, .detail-motion, .detail-society { display: block; margin-top: 8vh; }
+      .detail-gallery-three { display: grid; gap: 7px; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .detail-gallery figure, .detail-motion article, .detail-society-group, .detail-visual-group { margin: 0 0 45px !important; }
+      .detail-gallery-three figure { margin: 0 !important; }
+      .detail-gallery figure:nth-child(3):last-child { max-width: 100%; }
+      .detail-visuals { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .detail-visuals img { height: auto; }
+    }
+  </style>
+</Layout>
