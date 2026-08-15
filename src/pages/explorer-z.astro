@@ -1,0 +1,48 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+<Layout title="探索 — 朱萌">
+  <header class="sub-header site-header explorer-header">
+    <a class="wordmark" href="/">朱萌<span> / </span>JUDY ZHU</a>
+    <nav><a href="/student-z">求知</a><a href="/work-z">践行</a><a href="/artist-z">创造</a><a class="active" href="/explorer-z">探索</a><a href="/contact">联系</a></nav>
+    <span class="header-index">Z / 04</span>
+  </header>
+
+  <main class="explorer-coming-page">
+    <section class="coming-copy">
+      <p class="eyebrow">Z / 04 · EXPLORER</p>
+      <h1>保持好奇<br />奔赴热爱</h1>
+      <p>世界很大，值得不断探索。无论是走向陌生的地方，学习新的语言，还是尝试新的工具与领域，我希望始终保持开放与好奇，在探索中发现新的可能，也逐渐认识更丰富的自己。</p>
+    </section>
+
+    <section class="coming-soon" aria-label="探索页即将上线">
+      <span>EXPLORER / 04</span>
+      <strong>COMING<br />SOON</strong>
+      <i>持续建设中</i>
+    </section>
+  </main>
+
+  <footer class="site-footer"><span>© 2026 MENG ZHU</span><a href="/">回到首页 ↑</a></footer>
+
+  <style>
+    .explorer-header { background:var(--paper); color:var(--ink); }
+    .explorer-header .wordmark span,.explorer-header .header-index { color:var(--muted); }
+    .explorer-header nav a.active { border-color:currentColor; }
+    .explorer-coming-page { background:var(--paper); color:var(--ink); min-height:calc(100vh - 77px); padding:8vh 8vw 10vh; position:relative; }
+    .coming-copy { max-width:850px; position:relative; z-index:1; }
+    .coming-copy .eyebrow { color:var(--muted); }
+    .coming-copy h1 { font-family:var(--serif); font-size:110px; font-weight:400; letter-spacing:-.045em; line-height:.92; margin:28px 0 55px; }
+    .coming-copy > p:last-child { color:var(--muted); font-family:var(--serif); font-size:25px; line-height:1.55; margin:0; max-width:980px; }
+    .coming-soon { align-items:flex-end; border-bottom:1px solid var(--ink); display:flex; flex-direction:column; margin:9vh 0 0 auto; max-width:720px; padding:0 0 24px; text-align:right; }
+    .coming-soon span { color:var(--muted); font-size:11px; letter-spacing:.16em; }
+    .coming-soon strong { font-family:var(--serif); font-size:clamp(72px,12vw,170px); font-weight:400; letter-spacing:-.07em; line-height:.84; margin:28px 0 18px; }
+    .coming-soon i { color:var(--muted); font-family:var(--serif); font-size:18px; font-style:normal; }
+    @media (max-width:800px) {
+      .explorer-coming-page { min-height:calc(100vh - 65px); padding:6vh 6vw 10vh; }
+      .coming-copy h1 { font-size:58px; margin:24px 0 30px; }
+      .coming-copy > p:last-child { font-size:22px; }
+      .coming-soon { margin-top:14vh; }
+      .coming-soon strong { font-size:64px; }
+    }
+  </style>
+</Layout>

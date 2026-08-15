@@ -1,0 +1,172 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { projects } from '../data/projects.js';
+const workProject = projects.find((p) => p.slug === 'affiliate-operations');
+const supplyChain = projects.find((p) => p.slug === 'dairy-supply-chain');
+---
+<Layout title="践行 — 朱萌">
+  <header class="sub-header site-header">
+    <a class="wordmark" href="/">朱萌<span> / </span>JUDY ZHU</a>
+    <nav><a href="/student-z">求知</a><a class="active" href="/work-z">践行</a><a href="/artist-z">创造</a><a href="/explorer-z">探索</a><a href="/contact">联系</a></nav>
+    <span class="header-index">Z / 02</span>
+  </header>
+
+  <main class="z-page work-page">
+    <section class="z-page-hero work-hero">
+      <p class="eyebrow">Z / 02 · WORK</p>
+      <h1>于细微处见真章</h1>
+      <div class="work-lead">
+        <p>我相信，工作不仅是完成一项任务，更是一次不断探索和创造价值的过程。面对新的挑战，我保持开放和学习的心态，习惯从细节中发现问题，从实践中寻找更好的答案。</p>
+        <p>认真对待每一次尝试，持续积累经验与能力，是我对工作的坚持。我希望在不断成长的过程中，用自己的思考和行动，创造长期的价值。</p>
+      </div>
+    </section>
+
+    <section class="z-content">
+      <div>
+        <p class="section-label">/ A — EXPERIENCE</p>
+        <div class="career-timeline">
+          <article class="career-item">
+            <div class="career-marker"><span>2023.08 — 10 · 青岛</span><i></i></div>
+            <div class="career-copy">
+              <h2>中国建设银行</h2>
+              <p class="career-role">项目部实习生</p>
+              <ul>
+                <li><strong>项目研究与投资分析</strong><span>参与多个基础设施项目尽职调查，通过项目尽调、行业研究与财务分析，探索商业价值与投资机会。</span></li>
+                <li><strong>财务分析与价值评估</strong><span>搭建可比公司分析框架，结合市场信息与估值方法，对项目进行多维度分析，为投资决策提供支持。</span></li>
+              </ul>
+            </div>
+          </article>
+          <article class="career-item">
+            <div class="career-marker"><span>2025.09 — 12 · 上海</span><i></i></div>
+            <div class="career-copy">
+              <h2>罗兰贝格</h2>
+              <p class="career-role">管理咨询实习生</p>
+              <ul>
+                <li><strong>行业洞察与数据分析</strong><span>通过市场研究与数据整理，梳理行业趋势与竞争格局，支持商业决策分析。</span></li>
+                <li><strong>业务分析与问题拆解</strong><span>运用结构化分析方法拆解业务流程，识别关键问题，并提出流程优化方向。</span></li>
+                <li><strong>策略研究与项目协作</strong><span>参与咨询项目交付，与客户团队协同推进，将分析结果转化为可落地的优化建议。</span></li>
+              </ul>
+            </div>
+          </article>
+          <article class="career-item">
+            <div class="career-marker"><span>2026.01 — 04 · 上海</span><i></i></div>
+            <div class="career-copy">
+              <h2>蓝色光标</h2>
+              <p class="career-role">联盟营销实习生</p>
+              <ul>
+                <li><strong>渠道拓展与伙伴运营</strong><span>参与海外市场渠道拓展与合作伙伴维护，通过资源挖掘与沟通协作，连接品牌与海外流量渠道，推动合作发展。</span></li>
+                <li><strong>数据洞察与运营优化</strong><span>基于业务数据分析渠道表现，输出运营洞察；探索 AI 工具与自动化流程，提升数据分析与运营效率。</span></li>
+                <li><strong>流程优化与效率提升</strong><span>关注运营细节，通过优化 SOP、工具及信息展示方式，减少重复工作，提升团队协作效率。</span></li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <div>
+        <p class="section-label">/ B — WORK SAMPLES</p>
+        <a class="feature-link" href={`/projects/${workProject.slug}`}>
+          <small>{workProject.category}</small>
+          <h2>{workProject.title}</h2>
+          <p>{workProject.description}</p>
+          <span>查看案例 ↗</span>
+        </a>
+        <a class="feature-link" href={`/projects/${supplyChain.slug}`}>
+          <small>{supplyChain.category}</small>
+          <h2>{supplyChain.title}</h2>
+          <p>{supplyChain.description}</p>
+          <span>查看案例 ↗</span>
+        </a>
+      </div>
+
+      <div>
+        <p class="section-label">/ C — SKILLS</p>
+        <div class="skill-line"><h2>研究与商业洞察</h2><p>行业研究 · 市场洞察 · 数据分析 · 竞品分析 · 商业模式拆解 · 信息整理 · 投资研究 · 策略支持</p></div>
+        <div class="skill-line"><h2>运营与协作</h2><p>渠道拓展 · 伙伴运营 · 项目推进 · 跨团队沟通 · 流程优化 · 问题解决</p></div>
+        <div class="skill-line"><h2>AI 与效率提升</h2><p>ChatGPT · Gemini · Codex · Prompt 设计 · 数据处理 · 自动化工作流 · 工具探索</p></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><span>© 2026 MENG ZHU</span><a href="/">回到首页 ↑</a></footer>
+
+  <style>
+    .work-page .work-hero h1 {
+      font-family: var(--serif);
+      font-size: 110px;
+      font-weight: 400;
+      letter-spacing: -.035em;
+      line-height: .95;
+      margin: 40px 0 55px;
+      white-space: normal;
+    }
+
+    .work-page .work-lead {
+      color: var(--muted);
+      font-family: var(--serif);
+      font-size: 25px;
+      line-height: 1.55;
+      max-width: 980px;
+    }
+
+    .work-page .work-lead p { margin: 0 0 28px; }
+    .work-page .work-lead p:last-child { margin-bottom: 0; }
+
+    .career-timeline {
+      border-top: 1px solid var(--line);
+      margin-top: 40px;
+      padding-left: 25px;
+      position: relative;
+    }
+
+    .career-timeline::before {
+      background: var(--line);
+      content: '';
+      height: calc(100% - 40px);
+      left: 31px;
+      position: absolute;
+      transform: translateX(-50%);
+      width: 1px;
+    }
+
+    .career-item {
+      border-bottom: 1px solid var(--line);
+      display: grid;
+      gap: 28px;
+      grid-template-columns: 145px minmax(0, 1fr);
+      padding: 28px 0 32px 22px;
+      position: relative;
+    }
+
+    .career-item::before {
+      background: var(--ink);
+      border: 4px solid var(--paper);
+      border-radius: 50%;
+      content: '';
+      height: 10px;
+      left: -7px;
+      position: absolute;
+      top: 34px;
+      width: 10px;
+      z-index: 1;
+    }
+
+    .career-marker span { color: var(--muted); font-size: 11px; letter-spacing: .04em; line-height: 1.5; }
+    .career-copy h2 { font-family: var(--serif); font-size: 30px; font-weight: 400; margin: 0 0 5px; }
+    .career-role { color: var(--muted); margin: 0; }
+    .career-copy ul { list-style: none; margin: 22px 0 0; padding: 0; }
+    .career-copy li { border-top: 1px solid var(--line); display: grid; gap: 18px; grid-template-columns: 180px 1fr; padding: 14px 0; }
+    .career-copy li strong { font-family: var(--serif); font-size: 17px; font-weight: 400; }
+    .career-copy li span { color: var(--muted); font-size: 14px; line-height: 1.75; }
+
+    @media (max-width: 800px) {
+      .work-page .work-hero h1 { font-size: 58px; }
+      .work-page .work-lead { font-size: 22px; max-width: 100%; }
+      .career-item { display: block; padding-left: 15px; }
+      .career-marker { margin-bottom: 18px; }
+      .career-copy h2 { font-size: 27px; }
+      .career-copy li { display: block; }
+      .career-copy li span { display: block; margin-top: 7px; }
+    }
+  </style>
+</Layout>

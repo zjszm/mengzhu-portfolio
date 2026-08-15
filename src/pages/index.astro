@@ -1,0 +1,27 @@
+---
+import Layout from '../layouts/Layout.astro';
+const zEntries = [
+  { number: '01', label: '求知', title: '把问题\n研究清楚。', href: '/student-z', image: '/ip/student-z.png', tone: 'student' },
+  { number: '02', label: '践行', title: '把事情\n推进到底。', href: '/work-z', image: '/ip/work-z.png', tone: 'work' },
+  { number: '03', label: '创造', title: '让想法\n被看见。', href: '/artist-z', image: '/ip/artist-z.png', tone: 'artist' },
+  { number: '04', label: '探索', title: '向未知\n继续走。', href: '/explorer-z', image: '/ip/explorer-z.png', tone: 'explorer' },
+];
+---
+<Layout>
+  <header class="site-header home-header"><a class="wordmark" href="/">朱萌<span> / </span>JUDY ZHU</a><nav><a href="/student-z">求知</a><a href="/work-z">践行</a><a href="/artist-z">创造</a><a href="/explorer-z">探索</a><a href="/contact">联系</a></nav><span class="header-index">个人档案 / 001</span></header>
+  <main>
+    <section class="hero home-hero"><div class="hero-copy reveal"><h1>以好奇探索世界<br />用创造表达自我</h1><p class="hero-intro">Stay curious. Create endlessly.</p></div><div class="hero-art hero-ip-art" role="img" aria-label="求知、践行、创造与探索四个朱萌IP形象"></div></section>
+    <section class="intro-band" id="about"><p class="section-label">/ 00 — ABOUT</p><div class="intro-grid"><h2>不急着被一个<br /><span>标签</span>定义。</h2><div class="intro-text"><p>我相信，成长不是走向一个固定的答案，而是在不断尝试与创造中，逐渐认识自己。热爱观察，也热爱表达；追寻美感，也记录思考。愿始终保持敏锐与热忱，在未知的旅途中不断生长。</p></div></div></section>
+    <section class="z-entrances" id="z-entrances"><div class="section-head"><p class="section-label">/ 01 — FOUR WAYS OF BEING</p><p class="section-side">选择一个入口，进入不同的我</p></div><div class="z-grid">{zEntries.map((entry) => <a class={`z-card z-${entry.tone} reveal`} href={entry.href}><span class="z-index">Z / {entry.number}</span><img class="z-portrait" src={entry.image} alt={`${entry.label}个人IP形象`} loading="lazy" /><h2>{entry.title.split('\n').map((line) => <>{line}<br /></>)}</h2><span class="z-arrow">进入 {entry.label} ↗</span></a>)}</div></section>
+    <section class="home-contact-cta"><div class="home-contact-inner"><a class="home-contact-link" href="/contact">联系我 ↗</a></div></section>
+  </main>
+  <footer class="site-footer"><span>© 2026 MENG ZHU</span><span>BUILT WITH CURIOSITY</span><a href="/contact">联系方式 ↗</a></footer>
+  <style>
+    .home-contact-cta { align-items:flex-end; border-top:1px solid var(--line); display:flex; margin:0 5vw; min-height:clamp(260px,30vw,420px); padding:clamp(70px,10vw,140px) 0 clamp(80px,12vw,160px); }
+    .home-contact-inner { display:flex; justify-content:flex-end; width:100%; }
+    .home-contact-link { border-bottom:1px solid currentColor; font-size:15px; letter-spacing:.08em; padding-bottom:8px; white-space:nowrap; }
+    @media (max-width:800px) {
+      .home-contact-cta { margin:0 6vw; min-height:220px; padding:70px 0 100px; }
+    }
+  </style>
+</Layout>

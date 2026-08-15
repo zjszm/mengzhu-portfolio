@@ -1,0 +1,172 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { projects } from '../data/projects.js';
+const studentProjects = projects.filter((p) => ['environmental-regulation', 'alphabet-valuation', 'green-nudge', 'algorithmic-pricing', 'crypto-behavior'].includes(p.slug));
+---
+<Layout title="求知 — 朱萌">
+  <header class="sub-header site-header"><a class="wordmark" href="/">朱萌<span> / </span>JUDY ZHU</a><nav><a class="active" href="/student-z">求知</a><a href="/work-z">践行</a><a href="/artist-z">创造</a><a href="/explorer-z">探索</a><a href="/contact">联系</a></nav><span class="header-index">Z / 01</span></header>
+
+  <main class="z-page student-page">
+    <section class="z-page-hero student-hero">
+      <p class="eyebrow">Z / 01 · STUDENT</p>
+      <h1>读万卷书，行万里路</h1>
+      <div class="student-lead">
+        <p>有些认识来自书页，有些答案只能在路上遇见。学生时代于我而言，并不是一段被课程表框定的时间，而是一场持续发生的观察与探索：读书、学习、记录，也在一次次接触新事物的过程中，不断修正自己对世界的理解。</p>
+        <p>课堂里的理论、研究中的推演，以及对问题一次次的追问与验证，则让这种探索逐渐有了更清晰的方向。那些完成过的论文、项目与研究，不只是阶段性的成果，也记录着思考如何从模糊走向清晰，问题如何被拆解，答案又如何被一点点建立。</p>
+      </div>
+    </section>
+
+    <section class="z-content">
+      <div>
+        <p class="section-label">/ A — EDUCATION</p>
+        <div class="education-timeline">
+          <article class="education-item">
+            <div class="education-marker"><span>2019.09 — 2023.06</span><i></i></div>
+            <div class="education-copy"><h2>维多利亚大学</h2><p>文学学士（经济学专业）</p><small>加拿大</small></div>
+            <figure><button class="certificate-trigger" type="button" data-lightbox-src="/education/victoria-testamur.jpg" data-lightbox-alt="维多利亚大学毕业证"><img src="/education/victoria-testamur.jpg" alt="维多利亚大学毕业证" loading="lazy" /></button></figure>
+          </article>
+          <article class="education-item">
+            <div class="education-marker"><span>2024.02 — 2026.06</span><i></i></div>
+            <div class="education-copy"><h2>悉尼大学</h2><p>经济学硕士（金融经济专业）</p><small>澳大利亚</small></div>
+            <figure><button class="certificate-trigger" type="button" data-lightbox-src="/education/sydney-testamur.jpg" data-lightbox-alt="悉尼大学毕业证"><img src="/education/sydney-testamur.jpg" alt="悉尼大学毕业证" loading="lazy" /></button></figure>
+          </article>
+        </div>
+      </div>
+
+      <div>
+        <p class="section-label">/ B — RESEARCH & FINANCE</p>
+        <div class="student-projects">{studentProjects.map((project) => <a href={`/projects/${project.slug}`}><span>{project.number}</span><div><small>{project.category}</small><h2>{project.title}</h2><p>{project.short}</p></div><b>↗</b></a>)}</div>
+        <p class="student-followup">保持探索，持续思考。更多观点与洞察，将在个人公众号与你见面。</p>
+      </div>
+
+      <div>
+        <p class="section-label">/ C — SKILLS</p>
+        <div class="skill-line"><h2>研究与建模</h2><p>Excel · SQL · Stata · R · 面板数据 · 回归分析 · 文献研究 · 行业研究 · 问卷与行为研究设计</p></div>
+        <div class="skill-line"><h2>商业与金融</h2><p>DCF · FCFF · EV/EBITDA · 公司研究 · 供应链分析 · UIP · 汇率与衍生品风险管理</p></div>
+        <div class="skill-line skill-esg"><div><h2>可持续发展</h2><p>系统学习环境、社会责任与公司治理框架，培养从可持续发展视角分析企业价值与长期影响的能力。</p></div><figure><button class="certificate-trigger" type="button" data-lightbox-src="/education/esg-certificate.jpg" data-lightbox-alt="ESG 证书"><img src="/education/esg-certificate.jpg" alt="ESG 证书" loading="lazy" /></button></figure></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><span>© 2026 MENG ZHU</span><a href="/">回到首页 ↑</a></footer>
+
+  <div class="certificate-lightbox" data-lightbox aria-hidden="true"><button class="lightbox-close" type="button" data-lightbox-close aria-label="关闭证书预览">×</button><img data-lightbox-image alt="" /></div>
+
+  <style>
+    .student-page .student-hero h1 {
+      font-family: var(--serif);
+      font-size: 110px;
+      font-weight: 400;
+      letter-spacing: -.035em;
+      line-height: .95;
+      margin: 40px 0 55px;
+      white-space: normal;
+    }
+
+    .student-page .student-lead {
+      color: var(--muted);
+      display: block;
+      font-family: var(--serif);
+      font-size: 25px;
+      line-height: 1.55;
+      margin-left: 0;
+      max-width: 980px;
+      width: 100%;
+    }
+
+    .student-page .student-lead p { margin: 0 0 28px; width: 100%; }
+    .student-page .student-lead p:last-child { margin-bottom: 0; }
+    .student-page .student-followup { color: var(--muted); font-size: 16px; margin: 22px 0 0; }
+
+    .education-timeline {
+      border-top: 1px solid var(--line);
+      margin-top: 40px;
+      padding-left: 25px;
+    }
+
+    .education-item {
+      border-bottom: 1px solid var(--line);
+      display: grid;
+      gap: 28px;
+      grid-template-columns: 145px minmax(0, 1fr) 116px;
+      min-height: 168px;
+      padding: 25px 0 25px 22px;
+      position: relative;
+    }
+
+    .education-item::before {
+      background: var(--ink);
+      border: 4px solid var(--paper);
+      border-radius: 50%;
+      content: '';
+      height: 10px;
+      left: -7px;
+      position: absolute;
+      top: 31px;
+      width: 10px;
+      z-index: 1;
+    }
+
+    .education-timeline::before {
+      background: var(--line);
+      content: '';
+      height: calc(100% - 40px);
+      left: 31px;
+      position: absolute;
+      transform: translateX(-50%);
+      width: 1px;
+    }
+
+    .education-timeline { position: relative; }
+    .education-marker span { color: var(--muted); font-size: 11px; letter-spacing: .04em; line-height: 1.5; }
+    .education-copy h2 { font-family: var(--serif); font-size: 30px; font-weight: 400; margin: 0 0 8px; }
+    .education-copy p { color: var(--muted); margin: 0 0 4px; }
+    .education-copy small { color: var(--muted); font-size: 12px; }
+    .education-item figure { align-items: center; background: rgba(255,255,255,.38); display: flex; height: 118px; justify-content: center; margin: 0; overflow: hidden; padding: 6px; }
+    .education-item figure img { display: block; height: 100%; object-fit: contain; width: 100%; }
+    .certificate-trigger { background: transparent; border: 0; cursor: zoom-in; height: 100%; padding: 0; width: 100%; }
+    .certificate-trigger:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+
+    .skill-esg { align-items: center; display: grid; gap: 35px; grid-template-columns: 1fr 110px; }
+    .skill-esg figure { background: rgba(255,255,255,.4); height: 130px; margin: 0; padding: 6px; }
+    .skill-esg figure img { display: block; height: 100%; object-fit: contain; width: 100%; }
+    .skill-esg .certificate-trigger { display: block; height: 100%; }
+
+    .certificate-lightbox { align-items: center; background: rgba(20, 22, 20, .84); display: flex; inset: 0; justify-content: center; opacity: 0; padding: 30px; pointer-events: none; position: fixed; transition: opacity .2s ease; z-index: 20; }
+    .certificate-lightbox.is-open { opacity: 1; pointer-events: auto; }
+    .certificate-lightbox img { max-height: 90vh; max-width: min(90vw, 900px); object-fit: contain; }
+    .lightbox-close { background: var(--paper); border: 0; color: var(--ink); cursor: pointer; font-size: 30px; height: 42px; line-height: 1; position: absolute; right: 22px; top: 22px; width: 42px; }
+
+    @media (max-width: 800px) {
+      .student-page .student-hero h1 { font-size: 58px; }
+      .student-page .student-lead { font-size: 22px; max-width: 100%; }
+      .education-item { gap: 14px; grid-template-columns: 1fr 80px; padding-left: 15px; }
+      .education-marker { grid-column: 1 / -1; }
+      .education-copy h2 { font-size: 27px; }
+      .education-item figure { grid-column: 2; grid-row: 2; height: 92px; }
+      .education-copy { grid-column: 1; grid-row: 2; }
+      .skill-esg { display: block; }
+      .skill-esg figure { margin-top: 18px; width: 120px; }
+    }
+  </style>
+
+  <script>
+    const lightbox = document.querySelector('[data-lightbox]');
+    const lightboxImage = lightbox?.querySelector('[data-lightbox-image]');
+    const closeLightbox = () => {
+      lightbox?.classList.remove('is-open');
+      lightbox?.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    };
+    document.querySelectorAll('[data-lightbox-src]').forEach((trigger) => trigger.addEventListener('click', () => {
+      lightboxImage.src = trigger.dataset.lightboxSrc;
+      lightboxImage.alt = trigger.dataset.lightboxAlt || '';
+      lightbox.classList.add('is-open');
+      lightbox.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }));
+    lightbox?.querySelector('[data-lightbox-close]')?.addEventListener('click', closeLightbox);
+    lightbox?.addEventListener('click', (event) => { if (event.target === lightbox) closeLightbox(); });
+    document.addEventListener('keydown', (event) => { if (event.key === 'Escape') closeLightbox(); });
+  </script>
+</Layout>
