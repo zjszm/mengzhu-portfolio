@@ -1,0 +1,10 @@
+.vercel/
+node_modules/
+dist/
+.astro/
+.DS_Store
+.learnings/
+design-previews/
+*.pdf
+*.xmind
+个人网站内容策划.md
